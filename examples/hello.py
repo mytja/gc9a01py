@@ -21,7 +21,7 @@ import gc9a01py as gc9a01
 # from fonts import vga1_16x32 as font
 # from fonts import vga1_bold_16x32 as font
 # from fonts import vga2_16x32 as font
-from fonts import vga2_bold_16x32 as font
+import gc9a01.fonts.vga1_16x16 as font
 
 
 def main():
@@ -50,11 +50,13 @@ def main():
                     gc9a01.color565(
                         random.getrandbits(8),
                         random.getrandbits(8),
-                        random.getrandbits(8)),
+                        random.getrandbits(8),
+                    ),
                     gc9a01.color565(
                         random.getrandbits(8),
                         random.getrandbits(8),
-                        random.getrandbits(8))
+                        random.getrandbits(8),
+                    )
                 )
 
 
