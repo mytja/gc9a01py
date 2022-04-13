@@ -5,8 +5,9 @@ hello.py
 
 """
 import random
-from machine import Pin, SPI
+import board
 import gc9a01py as gc9a01
+import digitalio
 
 # Choose a font
 
@@ -21,18 +22,33 @@ import gc9a01py as gc9a01
 # from fonts import vga1_16x32 as font
 # from fonts import vga1_bold_16x32 as font
 # from fonts import vga2_16x32 as font
-import gc9a01.fonts.vga1_16x16 as font
+import gc9a01py.fonts.vga1_16x16 as font
+
+class Pin:
+    def __init__(self, pin: int):
+        self.pin = digitalio.DigitalInOut(pin)
+        self.pin.direction = digitalio.Direction.OUTPUT
+    
+    def off(self):
+        self.pin.value = False
+    
+    def on(self):
+        self.pin.value = True
+    
+    def value(self, value: int):
+        self.pin.value = value
 
 
 def main():
-    spi = SPI(2, baudrate=60000000, sck=Pin(18), mosi=Pin(23))
+    spi = board.SPI()
     tft = gc9a01.GC9A01(
         spi,
-        dc=Pin(21, Pin.OUT),
-        cs=Pin(13, Pin.OUT),
-        reset=Pin(26, Pin.OUT),
-        backlight=Pin(14, Pin.OUT),
-        rotation=0)
+        dc=Pin(board.D25),
+        cs=Pin(board.CE0),
+        reset=Pin(board.D5),
+        backlight=Pin(board.D24),
+        rotation=0,
+    )
 
     while True:
         for rotation in range(8):

@@ -48,7 +48,7 @@ C version of the driver at https://github.com/russhughes/gc9a01_mpy
 
 import time
 from micropython import const
-import ustruct as struct
+import struct
 
 # commands
 GC9A01_SWRESET = const(0x01)
@@ -163,7 +163,7 @@ class GC9A01():
         self._rotation = rotation % 8
 
         self.hard_reset()
-        time.sleep_ms(100)
+        time.sleep(0.1)
 
         self._write(0xEF)
         self._write(0xEB, b'\x14')
@@ -226,10 +226,10 @@ class GC9A01():
         self._write(0x35)
         self._write(0x21)
         self._write(0x11)
-        time.sleep_ms(120)
+        time.sleep(0.12)
 
         self._write(0x29)
-        time.sleep_ms(20)
+        time.sleep(0.02)
 
         self.rotation(self._rotation)
 
@@ -258,11 +258,11 @@ class GC9A01():
                 self.cs.off()
 
             self.reset.on()
-            time.sleep_ms(50)
+            time.sleep(0.05)
             self.reset.off()
-            time.sleep_ms(50)
+            time.sleep(0.05)
             self.reset.on()
-            time.sleep_ms(150)
+            time.sleep(0.15)
 
             if self.cs:
                 self.cs.on()
@@ -270,7 +270,7 @@ class GC9A01():
     def soft_reset(self):
         """Soft reset display."""
         self._write(GC9A01_SWRESET)
-        time.sleep_ms(150)
+        time.sleep(0.15)
 
     def sleep_mode(self, value):
         """
