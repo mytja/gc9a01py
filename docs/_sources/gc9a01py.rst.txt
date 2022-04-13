@@ -1,5 +1,0 @@
-gc9a01py Reference
-==================
-
-.. automodule:: gc9a01py
-   :members:

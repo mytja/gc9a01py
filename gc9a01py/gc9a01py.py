@@ -1,4 +1,5 @@
 """
+Copyright (c) 2022 Mitja Ševerkar
 Copyright (c) 2020, 2021 Russ Hughes
 
 This file incorporates work covered by the following copyright and
