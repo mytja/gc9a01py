@@ -7,6 +7,7 @@ hello.py
 import random
 import board
 import gc9a01py as gc9a01
+from gc9a01py.circuitpython import *
 import digitalio
 
 # Choose a font
