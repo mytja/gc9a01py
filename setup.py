@@ -22,7 +22,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="gc9a01",
+    name="gc9a01py",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     description="MicroPython/CircuitPython library for GC9A01.",
@@ -51,6 +51,6 @@ setup(
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     packages=[
-        "lib"
+        "gc9a01py"
     ],
 )
